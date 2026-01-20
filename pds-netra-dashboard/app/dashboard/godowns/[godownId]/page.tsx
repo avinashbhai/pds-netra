@@ -62,9 +62,9 @@ export default function GodownDetailPage() {
 
   return (
     <div className="space-y-4">
-      <Card>
+      <Card className="animate-fade-up">
         <CardHeader>
-          <div className="text-2xl font-semibold">{detail?.name ?? godownId}</div>
+          <div className="text-2xl font-semibold font-display">{detail?.name ?? godownId}</div>
           <div className="text-sm text-slate-600">
             District: {detail?.district ?? '-'} • Cameras: {detail?.cameras?.length ?? health?.cameras?.length ?? '-'}
           </div>
@@ -74,7 +74,7 @@ export default function GodownDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
               <div className="text-lg font-semibold mb-2">Cameras</div>
-              <div className="overflow-auto rounded-lg border border-slate-200">
+              <div className="table-shell overflow-auto">
                 <Table>
                   <THead>
                     <TR>

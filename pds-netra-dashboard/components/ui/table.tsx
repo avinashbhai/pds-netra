@@ -5,11 +5,11 @@ export function Table({ className = '', ...props }: React.TableHTMLAttributes<HT
 }
 
 export function THead({ className = '', ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {
-  return <thead className={`bg-slate-50 text-slate-600 ${className}`} {...props} />;
+  return <thead className={`bg-white/70 text-slate-600 ${className}`} {...props} />;
 }
 
 export function TH({ className = '', ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {
-  return <th className={`px-3 py-2 text-left font-semibold ${className}`} {...props} />;
+  return <th className={`px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.2em] ${className}`} {...props} />;
 }
 
 export function TBody({ className = '', ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {
@@ -17,7 +17,7 @@ export function TBody({ className = '', ...props }: React.HTMLAttributes<HTMLTab
 }
 
 export function TR({ className = '', ...props }: React.HTMLAttributes<HTMLTableRowElement>) {
-  return <tr className={`border-t border-slate-200 ${className}`} {...props} />;
+  return <tr className={`border-t border-white/60 transition hover:bg-white/60 ${className}`} {...props} />;
 }
 
 export function TD({ className = '', ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {

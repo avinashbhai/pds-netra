@@ -39,9 +39,9 @@ export default function HealthPage() {
   const rows = useMemo(() => summary?.recent_camera_status ?? [], [summary]);
 
   return (
-    <Card>
+    <Card className="animate-fade-up">
       <CardHeader>
-        <div className="text-xl font-semibold">Health</div>
+        <div className="text-xl font-semibold font-display">System Health</div>
         <div className="text-sm text-slate-600">Camera and device status across godowns.</div>
       </CardHeader>
       <CardContent>
@@ -51,22 +51,22 @@ export default function HealthPage() {
         {summary && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-              <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
+              <div className="p-4 rounded-xl glass-panel">
                 <div className="text-xs text-slate-600">Godowns with camera issues</div>
                 <div className="text-2xl font-semibold mt-1">{summary.godowns_with_issues}</div>
               </div>
-              <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
+              <div className="p-4 rounded-xl glass-panel">
                 <div className="text-xs text-slate-600">Offline cameras</div>
                 <div className="text-2xl font-semibold mt-1">{summary.offline_cameras}</div>
               </div>
-              <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
+              <div className="p-4 rounded-xl glass-panel">
                 <div className="text-xs text-slate-600">Recent health events</div>
                 <div className="text-2xl font-semibold mt-1">{summary.recent_health_events}</div>
               </div>
             </div>
 
             <div className="mb-2 text-sm font-semibold">Recent camera status</div>
-            <div className="overflow-auto rounded-lg border border-slate-200">
+            <div className="table-shell overflow-auto">
               <Table>
                 <THead>
                   <TR>

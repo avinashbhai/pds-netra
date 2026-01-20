@@ -12,7 +12,7 @@ function statusLabel(status: GodownListItem['status']) {
 
 export function GodownsTable({ items }: { items: GodownListItem[] }) {
   return (
-    <div className="overflow-auto rounded-xl border border-slate-200 bg-white">
+    <div className="table-shell overflow-auto">
       <Table>
         <THead>
           <TR>

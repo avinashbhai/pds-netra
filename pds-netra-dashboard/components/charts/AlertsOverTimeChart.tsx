@@ -7,7 +7,7 @@ export type AlertsOverTimePoint = { t: string; count: number };
 
 export function AlertsOverTimeChart({ data }: { data: AlertsOverTimePoint[] }) {
   return (
-    <Card>
+    <Card className="animate-fade-up">
       <CardHeader>
         <div className="text-sm text-slate-600">Alerts over time</div>
       </CardHeader>
@@ -18,7 +18,7 @@ export function AlertsOverTimeChart({ data }: { data: AlertsOverTimePoint[] }) {
               <XAxis dataKey="t" tick={{ fontSize: 12 }} />
               <YAxis allowDecimals={false} tick={{ fontSize: 12 }} />
               <Tooltip />
-              <Line type="monotone" dataKey="count" strokeWidth={2} dot={false} />
+              <Line type="monotone" dataKey="count" stroke="#0ea5e9" strokeWidth={2.5} dot={false} />
             </LineChart>
           </ResponsiveContainer>
         </div>

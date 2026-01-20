@@ -7,12 +7,12 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 export function Button({ variant = 'default', className = '', ...props }: Props) {
-  const base = 'inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none';
+  const base = 'inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-all disabled:opacity-50 disabled:pointer-events-none';
   const v =
     variant === 'outline'
-      ? 'border border-slate-200 bg-white hover:bg-slate-50'
+      ? 'btn-outline'
       : variant === 'ghost'
-        ? 'hover:bg-slate-100'
-        : 'bg-slate-900 text-white hover:bg-slate-800';
+        ? 'hover:bg-white/70'
+        : 'btn-primary';
   return <button className={`${base} ${v} ${className}`} {...props} />;
 }

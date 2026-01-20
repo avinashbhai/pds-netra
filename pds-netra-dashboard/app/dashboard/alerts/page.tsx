@@ -63,9 +63,9 @@ export default function AlertsPage() {
   }, [params]);
 
   return (
-    <Card>
+    <Card className="animate-fade-up">
       <CardHeader>
-        <div className="text-xl font-semibold">Alerts</div>
+        <div className="text-xl font-semibold font-display">Alert Command Feed</div>
         <div className="text-sm text-slate-600">Filter and review alerts across godowns.</div>
       </CardHeader>
       <CardContent>

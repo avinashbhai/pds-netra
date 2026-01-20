@@ -16,8 +16,11 @@ export function Topbar() {
   }, []);
 
   return (
-    <header className="flex items-center justify-between gap-4 border-b border-slate-200 bg-white px-4 py-3">
-      <div className="font-semibold">PDS Netra Dashboard</div>
+    <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-white/60 bg-white/70 px-4 py-3 backdrop-blur">
+      <div>
+        <div className="text-sm uppercase tracking-[0.2em] text-slate-500">Control Deck</div>
+        <div className="text-xl font-semibold font-display tracking-tight">PDS Netra Dashboard</div>
+      </div>
       <div className="flex items-center gap-3">
         {user ? (
           <>

@@ -6,7 +6,7 @@ import { formatUtc, humanAlertType, severityBadgeClass } from '@/lib/formatters'
 
 export function AlertsTable({ alerts }: { alerts: AlertItem[] }) {
   return (
-    <div className="overflow-auto rounded-lg border border-slate-200 bg-white">
+    <div className="table-shell overflow-auto">
       <Table>
         <THead>
           <TR>

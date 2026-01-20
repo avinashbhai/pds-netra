@@ -7,7 +7,7 @@ export type AlertsByTypePoint = { name: string; count: number };
 
 export function AlertsByTypeChart({ data }: { data: AlertsByTypePoint[] }) {
   return (
-    <Card>
+    <Card className="animate-fade-up">
       <CardHeader>
         <div className="text-sm text-slate-600">Alerts by type</div>
       </CardHeader>
@@ -18,7 +18,7 @@ export function AlertsByTypeChart({ data }: { data: AlertsByTypePoint[] }) {
               <XAxis dataKey="name" tick={{ fontSize: 12 }} interval={0} angle={-20} height={60} />
               <YAxis allowDecimals={false} />
               <Tooltip />
-              <Bar dataKey="count" />
+              <Bar dataKey="count" fill="#0f766e" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

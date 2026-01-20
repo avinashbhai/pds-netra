@@ -6,7 +6,7 @@ import { formatUtc, humanEventType, severityBadgeClass } from '@/lib/formatters'
 
 export function EventsTable({ events, showGodown = false }: { events: EventItem[]; showGodown?: boolean }) {
   return (
-    <div className="overflow-auto rounded-lg border border-slate-200 bg-white">
+    <div className="table-shell overflow-auto">
       <Table>
         <THead>
           <TR>

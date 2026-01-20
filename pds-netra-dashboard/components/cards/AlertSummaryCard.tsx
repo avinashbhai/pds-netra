@@ -6,10 +6,10 @@ import { formatUtc, humanAlertType, severityBadgeClass } from '@/lib/formatters'
 
 export function AlertSummaryCard({ alert }: { alert: AlertItem }) {
   return (
-    <Card className="hover:shadow-md transition">
+    <Card className="hover:shadow-lg transition animate-fade-up">
       <CardHeader className="flex items-start justify-between">
         <div>
-          <div className="text-sm font-semibold">{humanAlertType(alert.alert_type)}</div>
+          <div className="text-sm font-semibold font-display">{humanAlertType(alert.alert_type)}</div>
           <div className="text-xs text-slate-500">{alert.godown_name ?? alert.godown_id}</div>
         </div>
         <Badge className={severityBadgeClass(alert.severity_final)}>{alert.severity_final.toUpperCase()}</Badge>

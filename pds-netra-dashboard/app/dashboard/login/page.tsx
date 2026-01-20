@@ -32,10 +32,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
-      <Card className="w-full max-w-md">
+    <div className="app-shell flex items-center justify-center px-6 py-12">
+      <div className="app-bg" />
+      <div className="app-grid" />
+      <div className="pointer-events-none absolute -top-20 right-16 h-56 w-56 rounded-full bg-gradient-to-br from-teal-400/40 via-cyan-400/30 to-transparent blur-3xl animate-float" />
+      <div className="pointer-events-none absolute bottom-[-120px] left-[-80px] h-72 w-72 rounded-full bg-gradient-to-tr from-orange-400/40 via-amber-300/30 to-transparent blur-3xl animate-float" />
+      <Card className="w-full max-w-md relative z-10 glass-panel-strong">
         <CardHeader>
-          <div className="text-xl font-semibold">PDS Netra Dashboard</div>
+          <div className="text-sm uppercase tracking-[0.3em] text-slate-500">Secure Access</div>
+          <div className="text-2xl font-semibold font-display">PDS Netra Command</div>
           <div className="text-sm text-slate-600">Sign in to continue</div>
         </CardHeader>
         <CardContent>

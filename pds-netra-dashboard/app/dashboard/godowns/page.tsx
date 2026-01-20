@@ -51,9 +51,9 @@ export default function GodownsPage() {
 
   return (
     <div className="space-y-4">
-      <Card>
+      <Card className="animate-fade-up">
         <CardHeader>
-          <div className="text-xl font-semibold">Godowns</div>
+          <div className="text-xl font-semibold font-display">Godown Network</div>
           <div className="text-sm text-slate-600">Browse and filter monitored godowns</div>
         </CardHeader>
         <CardContent>
@@ -73,7 +73,7 @@ export default function GodownsPage() {
 
           <div className="mt-4">
             {error && <div className="text-sm text-red-700">{error}</div>}
-            {loading ? <div className="text-sm text-slate-600">Loading…</div> : <GodownsTable godowns={items} />}
+            {loading ? <div className="text-sm text-slate-600">Loading…</div> : <GodownsTable items={items} />}
           </div>
         </CardContent>
       </Card>

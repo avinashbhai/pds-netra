@@ -12,10 +12,10 @@ function statusBadge(status: GodownListItem['status']) {
 export function GodownSummaryCard({ godown }: { godown: GodownListItem }) {
   return (
     <Link href={`/dashboard/godowns/${godown.godown_id}`} className="block">
-      <Card className="hover:shadow-md transition-shadow">
+      <Card className="hover:shadow-lg transition-shadow animate-fade-up">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
-            <div className="font-semibold">{godown.name ?? godown.godown_id}</div>
+            <div className="font-semibold font-display">{godown.name ?? godown.godown_id}</div>
             <div className="text-xs text-slate-500">{godown.district ?? '-'}</div>
           </div>
           {statusBadge(godown.status)}

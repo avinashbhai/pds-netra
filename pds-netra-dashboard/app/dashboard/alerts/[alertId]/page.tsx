@@ -38,9 +38,9 @@ export default function AlertDetailPage() {
   }, [detail]);
 
   return (
-    <Card>
+    <Card className="animate-fade-up">
       <CardHeader>
-        <div className="text-xl font-semibold">Alert Detail</div>
+        <div className="text-xl font-semibold font-display">Alert Detail</div>
         <div className="text-sm text-slate-600">Review the full timeline and context for this alert.</div>
       </CardHeader>
       <CardContent>
@@ -50,29 +50,29 @@ export default function AlertDetailPage() {
         {detail && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-              <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
+              <div className="p-4 rounded-xl glass-panel">
                 <div className="text-xs text-slate-600">Type</div>
-                <div className="mt-1 font-semibold">{humanAlertType(detail.alert_type)}</div>
+                <div className="mt-1 font-semibold font-display">{humanAlertType(detail.alert_type)}</div>
               </div>
-              <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
+              <div className="p-4 rounded-xl glass-panel">
                 <div className="text-xs text-slate-600">Severity</div>
                 <div className="mt-2">
                   <Badge className={severityBadgeClass(detail.severity_final)}>{detail.severity_final.toUpperCase()}</Badge>
                 </div>
               </div>
-              <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
+              <div className="p-4 rounded-xl glass-panel">
                 <div className="text-xs text-slate-600">Status</div>
                 <div className="mt-1 font-semibold">{detail.status}</div>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-              <div className="p-4 rounded-lg border border-slate-200">
+              <div className="p-4 rounded-xl glass-panel">
                 <div className="text-xs text-slate-600">Godown</div>
                 <div className="font-semibold">{detail.godown_id}</div>
                 {detail.district && <div className="text-sm text-slate-600">{detail.district}</div>}
               </div>
-              <div className="p-4 rounded-lg border border-slate-200">
+              <div className="p-4 rounded-xl glass-panel">
                 <div className="text-xs text-slate-600">Time window</div>
                 <div className="text-sm">
                   <span className="font-medium">Start:</span> {formatUtc(detail.start_time)}
@@ -84,14 +84,14 @@ export default function AlertDetailPage() {
             </div>
 
             {detail.summary && (
-              <div className="p-4 rounded-lg border border-slate-200 mb-4">
+              <div className="p-4 rounded-xl glass-panel mb-4">
                 <div className="text-xs text-slate-600">Summary</div>
                 <div className="mt-1">{detail.summary}</div>
               </div>
             )}
 
             {keyMetaEntries.length > 0 && (
-              <div className="p-4 rounded-lg border border-slate-200 mb-4">
+              <div className="p-4 rounded-xl glass-panel mb-4">
                 <div className="text-xs text-slate-600 mb-2">Key details</div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                   {keyMetaEntries.map(([k, v]) => (

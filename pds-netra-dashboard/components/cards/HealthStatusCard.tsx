@@ -11,13 +11,14 @@ export function HealthStatusCard({
   variant?: 'default' | 'outline';
 }) {
   return (
-    <Card>
+    <Card className="animate-fade-up">
       <CardHeader>
-        <div className="text-sm text-slate-600">{title}</div>
+        <div className="text-xs uppercase tracking-[0.3em] text-slate-500">{title}</div>
       </CardHeader>
-      <CardContent>
-        <Badge variant={variant} className="text-base px-3 py-1">
-          {value}
+      <CardContent className="flex items-center justify-between">
+        <div className="text-3xl font-semibold font-display">{value}</div>
+        <Badge variant={variant} className="text-[11px] uppercase tracking-widest">
+          Live
         </Badge>
       </CardContent>
     </Card>

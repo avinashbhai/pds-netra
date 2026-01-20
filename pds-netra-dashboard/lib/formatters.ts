@@ -38,3 +38,9 @@ export function severityBadge(sev: Severity): { label: string; className: string
   if (sev === 'warning') return { label: 'Warning', className: 'bg-amber-100 text-amber-800 border-amber-200' };
   return { label: 'Info', className: 'bg-slate-100 text-slate-800 border-slate-200' };
 }
+
+export function severityBadgeClass(sev: Severity): string {
+  if (sev === 'critical') return 'bg-rose-100 text-rose-800 border-rose-200';
+  if (sev === 'warning') return 'bg-amber-100 text-amber-800 border-amber-200';
+  return 'bg-slate-100 text-slate-800 border-slate-200';
+}

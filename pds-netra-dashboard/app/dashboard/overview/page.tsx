@@ -42,7 +42,7 @@ export default function OverviewPage() {
     return (
       <Card>
         <CardHeader>
-          <div className="text-lg font-semibold">Overview</div>
+          <div className="text-lg font-semibold font-display">Overview</div>
         </CardHeader>
         <CardContent>
           <div className="text-sm text-red-700">{error}</div>
@@ -53,10 +53,18 @@ export default function OverviewPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <div className="text-2xl font-semibold">Overview</div>
-          <div className="text-sm text-slate-600">State-level summary across all monitored godowns</div>
+          <div className="text-3xl font-semibold font-display tracking-tight">
+            Statewide Command View
+          </div>
+          <div className="text-sm text-slate-600">
+            Live telemetry, alert pressure, and godown readiness at a glance.
+          </div>
+        </div>
+        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-slate-500">
+          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          Live system
         </div>
       </div>
 
@@ -73,7 +81,7 @@ export default function OverviewPage() {
 
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <div className="text-lg font-semibold">Godowns</div>
+          <div className="text-lg font-semibold font-display">Godown readiness</div>
           <div className="text-sm text-slate-600">Quick status view</div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
