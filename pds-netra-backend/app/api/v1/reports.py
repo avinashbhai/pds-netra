@@ -12,8 +12,8 @@ from typing import List, Dict
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
-from ..core.db import get_db
-from ..models.event import Alert
+from ...core.db import get_db
+from ...models.event import Alert
 
 
 router = APIRouter(prefix="/api/v1/reports", tags=["reports"])
