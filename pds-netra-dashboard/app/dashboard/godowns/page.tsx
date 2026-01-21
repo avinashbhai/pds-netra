@@ -6,6 +6,7 @@ import type { GodownListItem } from '@/lib/types';
 import { GodownsTable } from '@/components/tables/GodownsTable';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Select } from '@/components/ui/select';
+import { ErrorBanner } from '@/components/ui/error-banner';
 
 const statusOptions = [
   { label: 'All statuses', value: '' },
@@ -89,7 +90,7 @@ export default function GodownsPage() {
           )}
 
           <div className="mt-4">
-            {error && <div className="text-sm text-red-700">{error}</div>}
+            {error && <ErrorBanner message={error} onRetry={() => window.location.reload()} />}
             {loading ? <div className="text-sm text-slate-600">Loading…</div> : <GodownsTable items={items} />}
           </div>
         </CardContent>

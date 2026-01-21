@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Table, TBody, TD, TH, THead, TR } from '@/components/ui/table';
 import { formatUtc } from '@/lib/formatters';
+import { ErrorBanner } from '@/components/ui/error-banner';
 
 function onlineBadge(online: boolean) {
   return online ? (
@@ -43,9 +44,14 @@ export default function HealthPage() {
       <CardHeader>
         <div className="text-xl font-semibold font-display">System Health</div>
         <div className="text-sm text-slate-600">Camera and device status across godowns.</div>
+        {summary && (
+          <div className="text-xs uppercase tracking-[0.3em] text-slate-500">
+            Updated {formatUtc(summary.timestamp_utc)}
+          </div>
+        )}
       </CardHeader>
       <CardContent>
-        {error && <div className="text-sm text-red-700">{error}</div>}
+        {error && <ErrorBanner message={error} onRetry={() => window.location.reload()} />}
         {!summary && !error && <div className="text-sm text-slate-600">Loading…</div>}
 
         {summary && (

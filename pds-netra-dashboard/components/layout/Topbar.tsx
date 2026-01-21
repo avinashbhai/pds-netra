@@ -148,16 +148,16 @@ export function Topbar() {
   };
 
   return (
-    <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-white/60 bg-white/70 px-4 py-3 backdrop-blur relative">
+    <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-white/10 bg-slate-900/70 px-4 py-3 backdrop-blur relative text-slate-100">
       <div>
-        <div className="text-sm uppercase tracking-[0.2em] text-slate-500">Control Deck</div>
+        <div className="text-sm uppercase tracking-[0.2em] text-slate-400">Control Deck</div>
         <div className="text-xl font-semibold font-display tracking-tight">PDS Netra Dashboard</div>
-        <div className="mt-1 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-slate-500">
+        <div className="mt-1 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-slate-400">
           <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
           Live perimeter
         </div>
         {quietActive && (
-          <div className="mt-2 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-slate-400">
+          <div className="mt-2 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-slate-500">
             <span className="h-1.5 w-1.5 rounded-full bg-slate-400" />
             Quiet hours active
           </div>
@@ -204,7 +204,7 @@ export function Topbar() {
         </Button>
         {user ? (
           <>
-            <div className="hidden sm:block text-sm text-slate-700">
+            <div className="hidden sm:block text-sm text-slate-200">
               {user.name ?? user.username}
             </div>
             {mounted && <Badge variant="outline">Profile: {profile}</Badge>}

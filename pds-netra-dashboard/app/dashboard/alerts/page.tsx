@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { ErrorBanner } from '@/components/ui/error-banner';
 
 const severityOptions = [
   { label: 'All severities', value: '' },
@@ -91,7 +92,7 @@ export default function AlertsPage() {
         <div className="text-sm text-slate-600">Filter and review alerts across godowns.</div>
       </CardHeader>
       <CardContent>
-        {error && <div className="text-sm text-red-700 mb-3">{error}</div>}
+        {error && <ErrorBanner message={error} onRetry={() => window.location.reload()} />}
 
         {tickerItems.length > 0 && (
           <div className="ticker mb-4">

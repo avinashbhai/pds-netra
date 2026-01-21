@@ -106,14 +106,14 @@ export function Sidebar() {
   }, []);
 
   return (
-    <aside className="hidden md:flex md:flex-col md:w-72 px-5 py-6 border-r border-white/40 glass-panel">
-      <div className="flex items-center gap-3 pb-5 border-b border-white/40">
+    <aside className="hidden md:flex md:flex-col md:w-72 px-5 py-6 border-r border-white/10 bg-slate-900/70 text-slate-100 backdrop-blur">
+      <div className="flex items-center gap-3 pb-5 border-b border-white/10">
         <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 text-white flex items-center justify-center text-lg font-semibold shadow-lg">
           PN
         </div>
         <div>
           <div className="text-xl font-semibold font-display tracking-tight">PDS Netra</div>
-          <div className="text-xs text-slate-600">State Command Center</div>
+          <div className="text-xs text-slate-400">State Command Center</div>
         </div>
       </div>
       <nav className="mt-6 space-y-1">
@@ -125,8 +125,8 @@ export function Sidebar() {
               href={item.href}
               className={`group flex items-center justify-between rounded-xl px-3 py-2.5 text-sm transition ${
                 active
-                  ? 'bg-white/90 shadow-sm border border-white/70 font-semibold'
-                  : 'text-slate-700 hover:bg-white/70'
+                  ? 'bg-white/10 shadow-sm border border-white/15 font-semibold text-white'
+                  : 'text-slate-300 hover:bg-white/5'
               }`}
             >
               <span className="flex items-center gap-3">
@@ -135,18 +135,18 @@ export function Sidebar() {
               </span>
               <span
                 className={`h-2 w-2 rounded-full ${
-                  active ? 'bg-gradient-to-r from-amber-400 to-rose-500' : 'bg-slate-200 group-hover:bg-amber-200'
+                  active ? 'bg-gradient-to-r from-amber-400 to-rose-500' : 'bg-slate-600 group-hover:bg-amber-200'
                 }`}
               />
             </Link>
           );
         })}
       </nav>
-      <div className="mt-auto pt-5 text-xs text-slate-600 border-t border-white/40">
+      <div className="mt-auto pt-5 text-xs text-slate-400 border-t border-white/10">
         PoC build • GSCSCL
         <div className="mt-2 text-[11px] text-slate-500">AI-powered vigilance for 250+ godowns</div>
         {mounted && (
-          <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-slate-600">
+          <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-slate-300">
             Profile: {profile}
           </div>
         )}

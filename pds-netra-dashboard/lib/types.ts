@@ -143,6 +143,7 @@ export interface Paginated<T> {
 }
 
 export interface OverviewData {
+  timestamp_utc?: string | null;
   stats: {
     godowns_monitored: number;
     open_alerts_critical: number;

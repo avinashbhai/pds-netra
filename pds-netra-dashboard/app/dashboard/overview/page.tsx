@@ -8,6 +8,8 @@ import { GodownSummaryCard } from '@/components/cards/GodownSummaryCard';
 import { AlertsByTypeChart } from '@/components/charts/AlertsByTypeChart';
 import { AlertsOverTimeChart } from '@/components/charts/AlertsOverTimeChart';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { ErrorBanner } from '@/components/ui/error-banner';
+import { formatUtc } from '@/lib/formatters';
 
 export default function OverviewPage() {
   const [data, setData] = useState<OverviewData | null>(null);
@@ -45,7 +47,7 @@ export default function OverviewPage() {
           <div className="text-lg font-semibold font-display">Overview</div>
         </CardHeader>
         <CardContent>
-          <div className="text-sm text-red-700">{error}</div>
+          <ErrorBanner message={error} onRetry={() => window.location.reload()} />
         </CardContent>
       </Card>
     );
@@ -65,6 +67,9 @@ export default function OverviewPage() {
         <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-slate-500">
           <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
           Live system
+        </div>
+        <div className="text-xs uppercase tracking-[0.3em] text-slate-500">
+          Updated {formatUtc(data?.timestamp_utc)}
         </div>
       </div>
 

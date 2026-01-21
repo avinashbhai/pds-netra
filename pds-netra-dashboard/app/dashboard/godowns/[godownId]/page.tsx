@@ -10,6 +10,7 @@ import { AlertsTable } from '@/components/tables/AlertsTable';
 import { Table, THead, TBody, TR, TH, TD } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { formatUtc } from '@/lib/formatters';
+import { ErrorBanner } from '@/components/ui/error-banner';
 
 function onlineBadge(online: boolean) {
   return online ? (
@@ -70,7 +71,7 @@ export default function GodownDetailPage() {
           </div>
         </CardHeader>
         <CardContent>
-          {error && <div className="text-sm text-red-700">{error}</div>}
+          {error && <ErrorBanner message={error} onRetry={() => window.location.reload()} />}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
               <div className="text-lg font-semibold mb-2">Cameras</div>

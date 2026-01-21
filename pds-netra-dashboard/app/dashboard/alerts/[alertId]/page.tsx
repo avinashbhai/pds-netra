@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { EventsTable } from '@/components/tables/EventsTable';
 import { formatUtc, humanAlertType, severityBadgeClass } from '@/lib/formatters';
+import { ErrorBanner } from '@/components/ui/error-banner';
 
 export default function AlertDetailPage() {
   const params = useParams<{ alertId: string }>();
@@ -44,7 +45,7 @@ export default function AlertDetailPage() {
         <div className="text-sm text-slate-600">Review the full timeline and context for this alert.</div>
       </CardHeader>
       <CardContent>
-        {error && <div className="text-sm text-red-700">{error}</div>}
+        {error && <ErrorBanner message={error} onRetry={() => window.location.reload()} />}
         {!detail && !error && <div className="text-sm text-slate-600">Loading…</div>}
 
         {detail && (
