@@ -118,6 +118,7 @@ def overview(db: Session = Depends(get_db)) -> dict:
         )
 
     return {
+        "timestamp_utc": datetime.utcnow().isoformat() + "Z",
         "stats": {
             "godowns_monitored": godowns_monitored,
             "open_alerts_critical": open_alerts_critical,
