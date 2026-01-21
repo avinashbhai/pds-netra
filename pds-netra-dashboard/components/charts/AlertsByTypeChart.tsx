@@ -18,7 +18,7 @@ export function AlertsByTypeChart({ data }: { data: AlertsByTypePoint[] }) {
               <XAxis dataKey="name" tick={{ fontSize: 12 }} interval={0} angle={-20} height={60} />
               <YAxis allowDecimals={false} />
               <Tooltip />
-              <Bar dataKey="count" fill="#0f766e" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="count" fill="#f59e0b" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

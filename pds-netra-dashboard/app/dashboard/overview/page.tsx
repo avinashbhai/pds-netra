@@ -68,13 +68,13 @@ export default function OverviewPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 stagger">
         <HealthStatusCard title="Godowns monitored" value={data?.stats.godowns_monitored ?? '-'} />
         <HealthStatusCard title="Open alerts (Critical / Warning)" value={data ? `${data.stats.open_alerts_critical} / ${data.stats.open_alerts_warning}` : '-'} />
         <HealthStatusCard title="Cameras with issues" value={data?.stats.cameras_with_issues ?? '-'} />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 stagger">
         <AlertsByTypeChart data={alertsByType} />
         <AlertsOverTimeChart data={alertsOverTime} />
       </div>

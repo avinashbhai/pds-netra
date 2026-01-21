@@ -87,6 +87,7 @@ export interface EventItem {
 export interface AlertItem {
   id: string;
   godown_id: string;
+  godown_name?: string | null;
   district?: string | null;
   camera_id?: string | null;
   alert_type: string;
@@ -114,6 +115,13 @@ export interface HealthSummary {
   godowns_with_issues: number;
   cameras_offline: number;
   recent_health_events?: EventItem[];
+  recent_camera_status?: Array<{
+    godown_id: string;
+    camera_id: string;
+    online: boolean;
+    last_frame_utc?: string | null;
+    last_tamper_reason?: string | null;
+  }>;
 }
 
 export interface GodownHealth {
@@ -132,4 +140,16 @@ export interface Paginated<T> {
   total: number;
   page: number;
   page_size: number;
+}
+
+export interface OverviewData {
+  stats: {
+    godowns_monitored: number;
+    open_alerts_critical: number;
+    open_alerts_warning: number;
+    cameras_with_issues: number;
+    alerts_by_type: Record<string, number>;
+    alerts_over_time: Array<{ t: string; count: number }>;
+  };
+  godowns: GodownListItem[];
 }

@@ -21,6 +21,13 @@ export default function GodownsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const activeFilters = useMemo(() => {
+    const chips: string[] = [];
+    if (district.trim()) chips.push(`District: ${district.trim()}`);
+    if (status) chips.push(`Status: ${status}`);
+    return chips;
+  }, [district, status]);
+
   useEffect(() => {
     let mounted = true;
     (async () => {
@@ -70,6 +77,16 @@ export default function GodownsPage() {
               <div className="text-xs text-slate-500">Tip: Click a godown to view camera health, alerts and events.</div>
             </div>
           </div>
+
+          {activeFilters.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {activeFilters.map((chip) => (
+                <span key={chip} className="badge-soft rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-slate-600">
+                  {chip}
+                </span>
+              ))}
+            </div>
+          )}
 
           <div className="mt-4">
             {error && <div className="text-sm text-red-700">{error}</div>}

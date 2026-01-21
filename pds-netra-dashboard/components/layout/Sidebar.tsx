@@ -2,26 +2,118 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { getAlertProfile, onAlertCuesChange } from '@/lib/alertCues';
 
 const nav = [
-  { href: '/dashboard/overview', label: 'Overview' },
-  { href: '/dashboard/godowns', label: 'Godowns' },
-  { href: '/dashboard/alerts', label: 'Alerts' },
-  { href: '/dashboard/health', label: 'Health' }
+  { href: '/dashboard/overview', label: 'Overview', icon: OverviewIcon },
+  { href: '/dashboard/godowns', label: 'Godowns', icon: WarehouseIcon },
+  { href: '/dashboard/alerts', label: 'Alerts', icon: AlertIcon },
+  { href: '/dashboard/health', label: 'Health', icon: HeartbeatIcon }
 ];
+
+function OverviewIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M4 13.5L10 7.5L13 10.5L20 4"
+        stroke={active ? '#f59e0b' : '#64748b'}
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4 20H20"
+        stroke={active ? '#f59e0b' : '#64748b'}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function WarehouseIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M3 10.5L12 4L21 10.5"
+        stroke={active ? '#f59e0b' : '#64748b'}
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5 10.5V20H19V10.5"
+        stroke={active ? '#f59e0b' : '#64748b'}
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9 20V14H15V20"
+        stroke={active ? '#f59e0b' : '#64748b'}
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function AlertIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M12 7V13"
+        stroke={active ? '#f59e0b' : '#64748b'}
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <circle cx="12" cy="17" r="1.2" fill={active ? '#f59e0b' : '#64748b'} />
+      <path
+        d="M5.5 19.5H18.5L12 5.5L5.5 19.5Z"
+        stroke={active ? '#f59e0b' : '#64748b'}
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function HeartbeatIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M3 12H7L9.5 6L13.5 18L16.5 12H21"
+        stroke={active ? '#f59e0b' : '#64748b'}
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function Sidebar() {
   const pathname = usePathname();
+  const [profile, setProfile] = useState('default');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setProfile(getAlertProfile());
+    setMounted(true);
+    return onAlertCuesChange(() => setProfile(getAlertProfile()));
+  }, []);
 
   return (
     <aside className="hidden md:flex md:flex-col md:w-72 px-5 py-6 border-r border-white/40 glass-panel">
       <div className="flex items-center gap-3 pb-5 border-b border-white/40">
-        <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-teal-500 via-cyan-500 to-sky-500 text-white flex items-center justify-center text-lg font-semibold shadow-lg">
+        <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 text-white flex items-center justify-center text-lg font-semibold shadow-lg">
           PN
         </div>
         <div>
           <div className="text-xl font-semibold font-display tracking-tight">PDS Netra</div>
-          <div className="text-xs text-slate-600">State Monitoring Command</div>
+          <div className="text-xs text-slate-600">State Command Center</div>
         </div>
       </div>
       <nav className="mt-6 space-y-1">
@@ -37,10 +129,13 @@ export function Sidebar() {
                   : 'text-slate-700 hover:bg-white/70'
               }`}
             >
-              <span>{item.label}</span>
+              <span className="flex items-center gap-3">
+                <item.icon active={active} />
+                {item.label}
+              </span>
               <span
                 className={`h-2 w-2 rounded-full ${
-                  active ? 'bg-gradient-to-r from-teal-500 to-sky-500' : 'bg-slate-200 group-hover:bg-teal-200'
+                  active ? 'bg-gradient-to-r from-amber-400 to-rose-500' : 'bg-slate-200 group-hover:bg-amber-200'
                 }`}
               />
             </Link>
@@ -50,6 +145,11 @@ export function Sidebar() {
       <div className="mt-auto pt-5 text-xs text-slate-600 border-t border-white/40">
         PoC build • GSCSCL
         <div className="mt-2 text-[11px] text-slate-500">AI-powered vigilance for 250+ godowns</div>
+        {mounted && (
+          <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-slate-600">
+            Profile: {profile}
+          </div>
+        )}
       </div>
     </aside>
   );

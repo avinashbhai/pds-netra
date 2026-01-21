@@ -7,6 +7,7 @@ import type {
   GodownListItem,
   HealthSummary,
   LoginResponse,
+  OverviewData,
   Paginated,
   Severity
 } from './types';
@@ -113,4 +114,8 @@ export async function getHealthSummary(): Promise<HealthSummary> {
 
 export async function getGodownHealth(godownId: string): Promise<GodownHealth> {
   return apiFetch(`/api/v1/health/godowns/${encodeURIComponent(godownId)}`);
+}
+
+export async function getOverviewData(): Promise<OverviewData> {
+  return apiFetch('/api/v1/overview');
 }

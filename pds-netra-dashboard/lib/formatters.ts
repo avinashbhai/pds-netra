@@ -40,7 +40,7 @@ export function severityBadge(sev: Severity): { label: string; className: string
 }
 
 export function severityBadgeClass(sev: Severity): string {
-  if (sev === 'critical') return 'bg-rose-100 text-rose-800 border-rose-200';
-  if (sev === 'warning') return 'bg-amber-100 text-amber-800 border-amber-200';
-  return 'bg-slate-100 text-slate-800 border-slate-200';
+  if (sev === 'critical') return 'sev-critical';
+  if (sev === 'warning') return 'sev-warning';
+  return 'sev-info';
 }

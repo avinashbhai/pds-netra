@@ -32,6 +32,28 @@ export default function AlertsPage() {
   const [dateTo, setDateTo] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
 
+  const tickerItems = useMemo(() => {
+    const slice = alerts.slice(0, 8);
+    return slice.length > 0 ? slice : [];
+  }, [alerts]);
+
+  const pulseClass = (sev: Severity) => {
+    if (sev === 'critical') return 'pulse-dot pulse-critical';
+    if (sev === 'warning') return 'pulse-dot pulse-warning';
+    return 'pulse-dot pulse-info';
+  };
+
+  const activeFilters = useMemo(() => {
+    const chips: string[] = [];
+    if (godownId.trim()) chips.push(`Godown: ${godownId.trim()}`);
+    if (district.trim()) chips.push(`District: ${district.trim()}`);
+    if (severity) chips.push(`Severity: ${severity}`);
+    if (status) chips.push(`Status: ${status}`);
+    if (dateFrom) chips.push(`From: ${dateFrom}`);
+    if (dateTo) chips.push(`To: ${dateTo}`);
+    return chips;
+  }, [godownId, district, severity, status, dateFrom, dateTo]);
+
   const params = useMemo(() => {
     const p: Record<string, any> = {
       page: 1,
@@ -71,6 +93,19 @@ export default function AlertsPage() {
       <CardContent>
         {error && <div className="text-sm text-red-700 mb-3">{error}</div>}
 
+        {tickerItems.length > 0 && (
+          <div className="ticker mb-4">
+            <div className="ticker-track">
+              {[...tickerItems, ...tickerItems].map((alert, idx) => (
+                <div key={`${alert.id}-${idx}`} className="ticker-chip">
+                  <span className={pulseClass(alert.severity_final as Severity)} />
+                  {alert.godown_name ?? alert.godown_id} • {alert.alert_type.replaceAll('_', ' ')}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-6 gap-3 mb-4">
           <div className="md:col-span-2">
             <Label>Godown ID</Label>
@@ -98,6 +133,38 @@ export default function AlertsPage() {
             <Input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} />
           </div>
         </div>
+
+        {activeFilters.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {activeFilters.map((chip) => (
+              <span key={chip} className="badge-soft rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-slate-600">
+                {chip}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {alerts.length > 0 && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-5 stagger">
+            {alerts.slice(0, 6).map((alert) => (
+              <div key={alert.id} className="alert-toast p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.3em] text-slate-400">Live alert</div>
+                    <div className="mt-1 text-sm font-semibold text-white">
+                      {alert.alert_type.replaceAll('_', ' ')}
+                    </div>
+                    <div className="text-xs text-slate-400 mt-1">{alert.godown_name ?? alert.godown_id}</div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className={pulseClass(alert.severity_final as Severity)} />
+                    <span className="text-xs uppercase tracking-[0.2em] text-slate-300">{alert.severity_final}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         <AlertsTable alerts={alerts} />
       </CardContent>

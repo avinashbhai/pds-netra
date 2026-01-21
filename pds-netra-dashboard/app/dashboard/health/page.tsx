@@ -50,7 +50,7 @@ export default function HealthPage() {
 
         {summary && (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 stagger">
               <div className="p-4 rounded-xl glass-panel">
                 <div className="text-xs text-slate-600">Godowns with camera issues</div>
                 <div className="text-2xl font-semibold mt-1">{summary.godowns_with_issues}</div>

@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 export function Table({ className = '', ...props }: React.TableHTMLAttributes<HTMLTableElement>) {
-  return <table className={`w-full text-sm ${className}`} {...props} />;
+  return <table className={`w-full text-sm border-separate border-spacing-0 ${className}`} {...props} />;
 }
 
 export function THead({ className = '', ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {
-  return <thead className={`bg-white/70 text-slate-600 ${className}`} {...props} />;
+  return <thead className={`sticky top-0 z-10 bg-white/80 backdrop-blur text-slate-600 ${className}`} {...props} />;
 }
 
 export function TH({ className = '', ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {
